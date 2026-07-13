@@ -22,6 +22,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(site.seo.url),
   title: site.seo.title,
   description: site.seo.description,
+  alternates: { canonical: site.seo.url },
   openGraph: {
     title: site.name,
     description: site.tagline,
