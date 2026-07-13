@@ -1,7 +1,11 @@
 import type { MetadataRoute } from "next";
 import { SITE_URL } from "@/lib/seo";
 
-// Single-page site — one indexable route.
+const ROUTES = ["/", "/privacy", "/terms"];
+
 export default function sitemap(): MetadataRoute.Sitemap {
-  return [{ url: SITE_URL, lastModified: new Date() }];
+  return ROUTES.map((route) => ({
+    url: `${SITE_URL}${route}`,
+    lastModified: new Date(),
+  }));
 }

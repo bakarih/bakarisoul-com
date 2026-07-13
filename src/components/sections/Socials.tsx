@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { site } from "@/content/site";
 
 export function Socials() {
@@ -52,6 +53,14 @@ export function Socials() {
         <div className="font-mono text-[10px] tracking-[0.12em] text-[#7a7a7a]">
           © {new Date().getFullYear()} {footer.name} · {footer.domain} ·{" "}
           {footer.location}
+        </div>
+        <div className="flex gap-4 font-mono text-[10px] tracking-[0.12em] text-[#7a7a7a] uppercase">
+          <Link href="/privacy" className="hover:text-muted">
+            {footer.privacyLabel}
+          </Link>
+          <Link href="/terms" className="hover:text-muted">
+            {footer.termsLabel}
+          </Link>
         </div>
       </div>
     </footer>

@@ -7,6 +7,14 @@ export type BioParagraph = BioSegment[];
 
 export type PillarKey = "eng" | "ai" | "path";
 
+export type LegalSection = { heading: string; paragraphs: BioParagraph[] };
+export type LegalPageContent = {
+  title: string;
+  lastUpdated: string;
+  intro: BioParagraph[];
+  sections: LegalSection[];
+};
+
 const bio: BioParagraph[] = [
   [
     {
@@ -31,6 +39,250 @@ const bio: BioParagraph[] = [
   ],
 ];
 
+const CONTACT_EMAIL = "bakarisoulllc@gmail.com";
+const LEGAL_LAST_UPDATED = "July 13, 2026";
+
+const privacy: LegalPageContent = {
+  title: "Privacy",
+  lastUpdated: LEGAL_LAST_UPDATED,
+  intro: [
+    [
+      {
+        text: "This is the plain-language version. I don't run my own database or trackers — almost everything here is handled by the third-party services embedded in the site.",
+      },
+    ],
+  ],
+  sections: [
+    {
+      heading: "What I collect",
+      paragraphs: [
+        [
+          {
+            text: "Nothing, directly. This site has no accounts, no database, and no first-party analytics or ad trackers. It's a static page.",
+          },
+        ],
+      ],
+    },
+    {
+      heading: "What happens when you use the site",
+      paragraphs: [
+        [
+          {
+            text: "If you subscribe to the newsletter, your email goes straight to ",
+          },
+          { text: "Substack", href: "https://substack.com/privacy" },
+          {
+            text: ", who sends it and manages your subscription. Unsubscribe anytime from any issue.",
+          },
+        ],
+        [
+          { text: "If you book time with me, " },
+          { text: "Calendly", href: "https://calendly.com/privacy" },
+          {
+            text: " collects your name, email, and whatever you enter when scheduling. Paid sessions are billed through ",
+          },
+          { text: "Stripe", href: "https://stripe.com/privacy" },
+          {
+            text: ", via Calendly — I never see or store your card details.",
+          },
+        ],
+        [
+          {
+            text: "The featured video doesn't load until you click play. After that, ",
+          },
+          { text: "YouTube", href: "https://policies.google.com/privacy" },
+          { text: " may set cookies per Google's policy." },
+        ],
+        [
+          { text: "The embedded music players are served directly by " },
+          { text: "Bandcamp", href: "https://bandcamp.com/privacy" },
+          { text: ", which sets its own cookies to enable playback." },
+        ],
+        [
+          { text: "The site itself is hosted on " },
+          {
+            text: "Cloudflare",
+            href: "https://www.cloudflare.com/privacypolicy/",
+          },
+          {
+            text: ", which processes standard connection data to serve the page and block abuse.",
+          },
+        ],
+      ],
+    },
+    {
+      heading: "What I don't do",
+      paragraphs: [
+        [
+          {
+            text: "I don't sell your data, run ads, or use cross-site trackers. I don't have access to your payment details for paid bookings — that's between you, Calendly, and Stripe.",
+          },
+        ],
+      ],
+    },
+    {
+      heading: "Kids",
+      paragraphs: [
+        [
+          {
+            text: "This site isn't directed at children under 13, and I don't knowingly collect anything from them.",
+          },
+        ],
+      ],
+    },
+    {
+      heading: "Changes",
+      paragraphs: [
+        [{ text: "I'll update this page if what the site does changes." }],
+      ],
+    },
+    {
+      heading: "Questions",
+      paragraphs: [
+        [
+          { text: "Email me: " },
+          { text: CONTACT_EMAIL, href: `mailto:${CONTACT_EMAIL}` },
+        ],
+      ],
+    },
+  ],
+};
+
+const terms: LegalPageContent = {
+  title: "Terms",
+  lastUpdated: LEGAL_LAST_UPDATED,
+  intro: [
+    [
+      {
+        text: "Using bakarisoul.com — reading it, subscribing, or booking time with me — means you're agreeing to these terms. Short and plain, on purpose.",
+      },
+    ],
+    [
+      {
+        text: "This is a plain-language summary I wrote myself, not legal counsel. If you have a dispute or a serious question, talk to a lawyer, not just this page.",
+        italic: true,
+      },
+    ],
+  ],
+  sections: [
+    {
+      heading: "The content",
+      paragraphs: [
+        [
+          {
+            text: "The writing, portrait, and music on this site are mine unless I say otherwise. Link to it freely; please don't republish it as your own.",
+          },
+        ],
+      ],
+    },
+    {
+      heading: "Third-party links",
+      paragraphs: [
+        [
+          {
+            text: "This site links out to and embeds interviewrubric.com, Substack, YouTube, Bandcamp, PeerPush, Calendly, and various social platforms. I'm not responsible for their content, availability, or policies.",
+          },
+        ],
+      ],
+    },
+    {
+      heading: "The newsletter",
+      paragraphs: [
+        [
+          {
+            text: "Subscribing is free and runs through Substack. Unsubscribe whenever you want.",
+          },
+        ],
+      ],
+    },
+    {
+      heading: "Booking a call",
+      paragraphs: [
+        [{ text: "Free intro calls are free, as advertised." }],
+        [
+          {
+            text: "Paid sessions — consulting, coaching, or creative work — are billed through Stripe via Calendly. Cancel or reschedule at least 24 hours before the meeting for a full refund. Cancellations inside 24 hours aren't refunded.",
+          },
+        ],
+        [
+          {
+            text: "I don't collect or store your payment information — that's handled entirely by Stripe and Calendly.",
+          },
+        ],
+      ],
+    },
+    {
+      heading: "What you get",
+      paragraphs: [
+        [
+          {
+            text: "Anything I create for you as part of paid work — a resume, an arrangement, coaching notes — is yours once payment clears, unless we agree otherwise in writing.",
+          },
+        ],
+      ],
+    },
+    {
+      heading: "Confidentiality",
+      paragraphs: [
+        [
+          {
+            text: "What you share with me in a coaching or consulting session stays between us. I won't share specifics without your permission.",
+          },
+        ],
+      ],
+    },
+    {
+      heading: "No guarantees",
+      paragraphs: [
+        [
+          {
+            text: "I bring what I've got, but I can't promise outcomes — job offers, interview results, audience reach — from any consulting, coaching, or creative work.",
+          },
+        ],
+      ],
+    },
+    {
+      heading: "Liability",
+      paragraphs: [
+        [
+          {
+            text: "This site and my services are provided as-is. To the extent the law allows, I'm not liable for indirect or consequential damages arising from your use of the site or my services.",
+          },
+        ],
+      ],
+    },
+    {
+      heading: "Governing law",
+      paragraphs: [
+        [
+          {
+            text: "These terms are governed by the laws of the State of Georgia, where I live and work.",
+          },
+        ],
+      ],
+    },
+    {
+      heading: "Changes",
+      paragraphs: [
+        [
+          {
+            text: "I may update these terms from time to time. Using the site after a change means you accept the update.",
+          },
+        ],
+      ],
+    },
+    {
+      heading: "Questions",
+      paragraphs: [
+        [
+          { text: "Email me: " },
+          { text: CONTACT_EMAIL, href: `mailto:${CONTACT_EMAIL}` },
+        ],
+      ],
+    },
+  ],
+};
+
 export const site = {
   name: "Bakari Holmes",
   handle: "bakarisoul",
@@ -50,7 +302,7 @@ export const site = {
     { glyph: "singing", label: "vocalist", pillar: "path" as PillarKey },
     { glyph: "teaching", label: "teacher", pillar: "eng" as PillarKey },
     { glyph: "coding", label: "engineer", pillar: "ai" as PillarKey },
-    { glyph: "speaking", label: "founder", pillar: "eng" as PillarKey },
+    { glyph: "speaking", label: "speaker", pillar: "eng" as PillarKey },
     { glyph: "hugging", label: "human", pillar: "path" as PillarKey },
   ],
 
@@ -60,7 +312,7 @@ export const site = {
     titleEmphasis: "making hard things make sense",
     titleSuffix: ".",
     subtitle:
-      "Bakari Holmes · engineering manager, staff frontend engineer, educator and interview coach, bass/baritone with commUNITY ATL. Based in Atlanta.",
+      "Bakari Holmes · engineering manager, staff frontend engineer, speaker, educator and interview coach, bass/baritone with commUNITY ATL. Based in Atlanta.",
   },
 
   bio,
@@ -202,6 +454,14 @@ export const site = {
     name: "Bakari Holmes",
     domain: "bakarisoul.com",
     location: "Atlanta, GA",
+    privacyLabel: "Privacy",
+    termsLabel: "Terms",
+  },
+
+  legal: {
+    contactEmail: CONTACT_EMAIL,
+    privacy,
+    terms,
   },
 
   seo: {
