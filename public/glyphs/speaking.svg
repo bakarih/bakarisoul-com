@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <radialGradient id="speakGlow" cx="35%" cy="40%" r="75%">
+      <stop offset="0%" stop-color="#FF6719" stop-opacity="0.32"></stop>
+      <stop offset="55%" stop-color="#2a1a12" stop-opacity="0.55"></stop>
+      <stop offset="100%" stop-color="#141414"></stop>
+    </radialGradient>
+  </defs>
+  <rect width="400" height="400" fill="url(#speakGlow)"></rect>
+  
+  <rect x="180" y="50" width="200" height="180" fill="#1e1e1e" stroke="#3a3a3a" stroke-width="1.5"></rect>
+  
+  <g fill="#FF6719">
+    <rect x="200" y="170" width="22" height="45"></rect>
+    <rect x="230" y="140" width="22" height="75"></rect>
+    <rect x="260" y="110" width="22" height="105"></rect>
+    <rect x="290" y="85" width="22" height="130"></rect>
+    <rect x="320" y="70" width="22" height="145" fill="#f5f0ea"></rect>
+  </g>
+  
+  <g stroke="#3a3a3a" stroke-width="1.5">
+    <line x1="195" y1="220" x2="365" y2="220"></line>
+    <line x1="195" y1="60" x2="195" y2="220"></line>
+  </g>
+  
+  <line x1="195" y1="42" x2="240" y2="42" stroke="#FF6719" stroke-width="3"></line>
+  
+  <g fill="#0a0a0a">
+    
+    <circle cx="110" cy="200" r="30"></circle>
+    
+    <path d="M 60 400 Q 65 260 110 240 Q 155 260 160 400 Z"></path>
+    
+    <path d="M 148 275 Q 195 265 235 285 L 232 300 Q 195 285 148 292 Z"></path>
+    
+    <ellipse cx="70" cy="305" rx="10" ry="8"></ellipse>
+  </g>
+  
+  <rect x="40" y="310" width="70" height="90" fill="#1e1e1e" stroke="#3a3a3a" stroke-width="1.5"></rect>
+  <rect x="35" y="308" width="80" height="8" fill="#3a3a3a"></rect>
+  
+  <g fill="#0a0a0a" opacity="0.7">
+    <circle cx="200" cy="390" r="12"></circle>
+    <circle cx="230" cy="395" r="12"></circle>
+    <circle cx="262" cy="392" r="12"></circle>
+    <circle cx="295" cy="395" r="12"></circle>
+    <circle cx="328" cy="390" r="12"></circle>
+    <circle cx="360" cy="395" r="12"></circle>
+  </g>
+  
+  <line x1="0" y1="400" x2="400" y2="400" stroke="#3a3a3a" stroke-width="2"></line>
+</svg>
