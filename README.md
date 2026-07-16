@@ -19,10 +19,51 @@ Open [http://localhost:3000](http://localhost:3000).
 
 - `npm run build` — production build (static RSC output)
 - `npm run lint` — ESLint
+- `npm test` — unit tests (Jest + Testing Library)
+- `npm run test:e2e` — end-to-end tests (Playwright, see below)
 - All copy and outbound URLs live in [`src/content/site.ts`](src/content/site.ts) —
   no user-facing string is hard-coded in a component.
 - Design tokens (colors, fonts, type scale) live in
   [`src/app/globals.css`](src/app/globals.css) as Tailwind v4 `@theme` tokens.
+
+## Testing
+
+Two layers, matching [interview-rubric-creator](https://github.com/bakarih/interview-rubric-creator)'s
+conventions:
+
+- **Unit** (`__tests__/unit/`, Jest + Testing Library) — the interactive
+  components (`SubscribeForm`, `YouTubeEmbed`, `CalendlyButton`,
+  `BandcampPlayer`), the `www`→apex redirect middleware, `robots.ts`/`sitemap.ts`,
+  and a content-sanity suite (`site-content.test.ts`) that catches things a
+  build won't — a malformed URL, a swapped Bandcamp track ID, a YouTube ID
+  that doesn't match its own URL.
+- **E2E** (`__tests__/e2e/`, Playwright) — real browser flows against a
+  production build: homepage renders all six identity-strip facets and both
+  booking CTAs, nav pills jump to the right section, the YouTube poster
+  click-to-loads, `/privacy` and `/terms` render with canonical tags, and
+  `robots.txt`/`sitemap.xml` serve correctly.
+
+```bash
+npm test               # unit tests
+npm run test:coverage  # unit tests with coverage report
+npm run test:e2e       # e2e tests (builds + starts the app on :3417 automatically)
+```
+
+The e2e suite runs on a dedicated port (3417) rather than Next's default
+3000 — this avoids silently attaching to a *different* Next.js project's dev
+server if one happens to already be running on 3000.
+
+**Production health check**: the same e2e suite can run directly against the
+live site — useful for diagnosing "why did something go down":
+
+```bash
+PLAYWRIGHT_BASE_URL=https://bakarisoul.com npx playwright test
+```
+
+One test (`seo.spec.ts` → "production www redirect") always hits
+`https://www.bakarisoul.com` directly regardless of this flag, since the
+`www`→apex redirect only exists at the Cloudflare edge and can't be verified
+against a local build.
 
 ## Project structure
 
