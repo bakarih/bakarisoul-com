@@ -18,21 +18,21 @@ export type LegalPageContent = {
 const bio: BioParagraph[] = [
   [
     {
-      text: "I'm an engineering manager and staff-level frontend engineer with 9+ years shipping React/TypeScript at consumer scale — 23andMe, CompetesTV, CodePath. Before that, twelve years as an educator — K–12 physics and engineering (National Master Teacher Award).",
+      text: "I've been an engineer for 10+ years — Python, React, and TypeScript at consumer scale, across 23andMe, CompetesTV, and CodePath. Before that, twelve years as an educator — K–12 physics and engineering (National Master Teacher Award).",
     },
   ],
   [
     {
-      text: "Making hard things make sense is what a rubric does. A good standup does it. A good bass line does it. Whether I'm writing about engineering leadership, building ",
+      text: "Whether I'm writing about interviewing tips, building ",
     },
     { text: "interviewrubric.com", href: "https://interviewrubric.com" },
     {
-      text: ", arranging music for a 75-voice choir, or singing a solo — same job, different medium.",
+      text: ", recording background vocals, a cappella, doing voice-over, songwriting, or singing solo — same job, different medium. I strive to be a master communicator.",
     },
   ],
   [
     {
-      text: "Right now: shipping interviewrubric.com, writing on Substack, and singing with commUNITY ATL — 40 of us return to ",
+      text: "Right now: architecting and shipping interviewrubric.com, writing on Substack, and singing with commUNITY ATL — 40 of us return to ",
     },
     { text: "America's Got Talent", italic: true },
     { text: " in August." },
@@ -312,7 +312,7 @@ export const site = {
     titleEmphasis: "making hard things make sense",
     titleSuffix: ".",
     subtitle:
-      "Bakari Holmes · engineering manager, staff frontend engineer, speaker, educator and interview coach, bass/baritone with commUNITY ATL. Based in Atlanta.",
+      "Bakari Holmes · AI Enablement Leader, Senior/Staff Software Engineer, Engineering Manager, Technical Lead, speaker, educator, musician, and interview coach. Currently singing bass, baritone, and tenor with commUNITY ATL. Based in Atlanta.",
   },
 
   bio,
@@ -363,7 +363,7 @@ export const site = {
   },
 
   music: {
-    kicker: "Music · commUNITY ATL",
+    kicker: "Music · Executive produced, arranged, co-directed, and co-choreographed by Bakari",
     featuredTitlePrefix: "Evolution of ",
     featuredTitleEmphasis: "Earth, Wind & Fire",
     description:
@@ -467,7 +467,7 @@ export const site = {
   seo: {
     title: "Bakari Holmes — Making Hard Things Make Sense",
     description:
-      "Engineering manager, staff frontend engineer, educator and interview coach, bass/baritone. Building interviewrubric.com, writing on Substack, singing with commUNITY ATL.",
+      "AI Enablement Leader, Senior/Staff Software Engineer, Engineering Manager, speaker, educator, and interview coach. Building interviewrubric.com, writing on Substack, singing with commUNITY ATL.",
     url: "https://bakarisoul.com",
     twitterCreator: "@BakMamba74",
   },
