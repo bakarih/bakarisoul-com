@@ -201,7 +201,23 @@ const terms: LegalPageContent = {
         [{ text: "Free intro calls are free, as advertised." }],
         [
           {
-            text: "Paid sessions — consulting, coaching, or creative work — are billed through Stripe via Calendly. Cancel or reschedule at least 24 hours before the meeting for a full refund. Cancellations inside 24 hours aren't refunded.",
+            text: "Paid sessions — consulting, coaching, or creative work — are billed through Stripe via Calendly, booked and paid in advance.",
+          },
+        ],
+        [
+          {
+            text: "Reschedule or cancel with at least 24 hours' notice: full refund or a free reschedule, your choice.",
+          },
+        ],
+        [
+          {
+            text: "Cancel with less than 24 hours' notice: the session fee is forfeited, but you still get one free reschedule.",
+          },
+        ],
+        [{ text: "No-show, no notice: fee forfeited, no reschedule." }],
+        [
+          {
+            text: "If I need to cancel or reschedule for any reason: you always get a full refund or a free reschedule, no exceptions.",
           },
         ],
         [
@@ -390,21 +406,33 @@ export const site = {
   },
 
   hire: {
-    // TODO: swap for a paid "Consulting" Calendly event type (with Stripe
-    // payment collection configured in the Calendly dashboard) once set up —
-    // see README.
+    // Free intro-call link — public speaking and engineering consulting
+    // inquiries start here, no payment required.
     calendlyUrl: "https://calendly.com/bakari-holmes/30min",
+    // TODO: swap for the paid "Technical & Behavioral Interview Coaching"
+    // Calendly event type (Stripe payment collection configured in the
+    // Calendly dashboard) once created — see README. Placeholder reuses the
+    // free link so the CTA works today; it does NOT yet charge $85/hr.
+    interviewCoachingCalendlyUrl: "https://calendly.com/bakari-holmes/30min",
     consulting: {
-      kicker: "Speaking & Coaching",
-      title: "Book me for a call",
-      description:
-        "Public speaking, technical interview coaching, and engineering consulting.",
-      services: [
-        "public speaking",
-        "technical interview coaching",
-        "engineering consultant",
-      ],
+      kicker: "Speaking & Consulting",
+      title: "Book a free intro call",
+      description: "Public speaking and engineering consulting.",
+      services: ["public speaking", "engineering consultant"],
       ctaLabel: "Book on Calendly →",
+    },
+    interviewCoaching: {
+      kicker: "Interview Coaching · $85/hr",
+      title: "Technical & Behavioral Interview Coaching",
+      description:
+        "Booked and paid in advance. Frameworks built from teaching interview prep at CodePath (93% pass rate across five cohorts), building interviewrubric.com, and my own current job search.",
+      services: [
+        "JD mapping",
+        "gap analysis",
+        "behavioral stories",
+        "goal clarity",
+      ],
+      ctaLabel: "Book on Calendly → ($85/hr)",
     },
     creative: {
       kicker: "Music & Writing",

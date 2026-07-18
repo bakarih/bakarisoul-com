@@ -36,10 +36,18 @@ test.describe("Homepage", () => {
     await expect(page.getByRole("link", { name: "Watch on YouTube →" })).toBeVisible();
   });
 
-  test("renders both consulting and creative booking CTAs", async ({ page }) => {
+  test("renders all three booking CTAs — speaking/consulting, paid interview coaching, and creative", async ({
+    page,
+  }) => {
     await page.goto("/");
-    const bookingButtons = page.getByRole("link", { name: "Book on Calendly →" });
-    await expect(bookingButtons).toHaveCount(2);
+    // Free-intro-call CTAs (speaking/consulting + creative) share this exact label.
+    await expect(
+      page.getByRole("link", { name: "Book on Calendly →", exact: true })
+    ).toHaveCount(2);
+    // The paid interview coaching CTA has its own distinct, price-labeled button.
+    await expect(
+      page.getByRole("link", { name: "Book on Calendly → ($85/hr)" })
+    ).toBeVisible();
   });
 
   test("footer has social links and legal page links", async ({ page }) => {

@@ -25,6 +25,10 @@ export function Write() {
       </a>
       <SubscribeForm />
       <BookingCTA {...hire.consulting} calendlyUrl={hire.calendlyUrl} />
+      <BookingCTA
+        {...hire.interviewCoaching}
+        calendlyUrl={hire.interviewCoachingCalendlyUrl}
+      />
     </>
   );
 }
