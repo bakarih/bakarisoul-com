@@ -3,6 +3,7 @@ import { Newsreader, JetBrains_Mono } from "next/font/google";
 import { headers } from "next/headers";
 import "./globals.css";
 import { site } from "@/content/site";
+import { FeedbackMenu } from "@/components/ui/FeedbackMenu";
 
 const newsreader = Newsreader({
   variable: "--font-newsreader",
@@ -82,6 +83,7 @@ export default async function RootLayout({
           Skip to main content
         </a>
         {children}
+        <FeedbackMenu />
       </body>
     </html>
   );
