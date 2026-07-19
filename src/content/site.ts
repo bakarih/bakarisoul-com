@@ -406,34 +406,24 @@ export const site = {
   },
 
   hire: {
-    consulting: {
-      kicker: "Speaking & Consulting",
-      title: "Book a free intro call",
-      description: "Public speaking and engineering consulting.",
-      services: ["public speaking", "engineering consultant"],
-      options: [
-        {
-          label: "Book on Calendly →",
-          calendlyUrl: "https://calendly.com/bakari-holmes/30min",
-        },
-      ],
-    },
     interviewCoaching: {
       kicker: "Interview Coaching",
       title: "Technical & Behavioral Interview Coaching",
       description:
-        "Includes an hour of prep on my end — your resume, goals, and LinkedIn — before every session, so I'm not coming in cold. Booked and paid in advance. Frameworks built from teaching interview prep at CodePath (93% pass rate across five cohorts), building interviewrubric.com, and my own current job search.",
+        "Live 1:1 coaching — technical and behavioral. Frameworks built from teaching interview prep at CodePath (93% pass rate across five cohorts), building interviewrubric.com, hundreds of reps on both sides of the table, and formal training from Interview Kickstart and Outco.",
       services: [
         "JD mapping",
         "gap analysis",
         "behavioral stories",
         "goal clarity",
       ],
-      // TODO: swap both placeholders for the real paid "Technical &
-      // Behavioral Interview Coaching" Calendly event type URLs (1hr and 2hr,
-      // Stripe payment collection configured in the Calendly dashboard) once
-      // created — see README. Placeholders reuse the free link so the CTAs
-      // work today; they do NOT yet charge $170/$255.
+      helperNote: "Not sure? Start with 1 hour — we can always book a follow-up.",
+      paymentNote: "Free reschedule with 24h notice.",
+      // TODO: swap both placeholders for the real paid "Interview Coaching —
+      // Live" Calendly event type URLs (1hr and 2hr, Stripe payment
+      // collection configured in the Calendly dashboard) once created — see
+      // README. Placeholders reuse the free link so the CTAs work today;
+      // they do NOT yet charge $170/$255.
       options: [
         {
           label: "Book 1 Hour — $170 →",
@@ -447,27 +437,60 @@ export const site = {
     },
     resumeLinkedInMakeover: {
       kicker: "Resume & LinkedIn",
-      title: "Resume & LinkedIn Makeover",
+      title: "Resume & LinkedIn Review",
       description:
-        "Includes an hour of prep on my end before every session, so I'm not coming in cold. Billed in $85 blocks — pick how much ground you need to cover. Booked and paid in advance.",
-      services: ["resume revamp", "linkedin makeover", "keyword optimization"],
-      // TODO: swap all three placeholders for the real paid Calendly event
-      // type URLs (Stripe payment collection configured in the Calendly
-      // dashboard) once created — see README. Placeholders reuse the free
-      // link so the dropdown works today; it does NOT yet charge. Each
-      // price = work blocks + 1hr prep, same $85/hr rate as interview
-      // coaching (1 block+prep=$170, 2 blocks+prep=$255, 3 blocks+prep=$340).
+        "Async + live. I review your material ahead of time, then we go over the feedback together and rework it live — resume, LinkedIn, or both.",
+      services: ["resume review", "linkedin review", "keyword optimization"],
+      helperNote:
+        "Not sure which to pick? Start with a 1-hour resume or LinkedIn review — we can always go deeper.",
+      paymentNote:
+        "Free reschedule with 24h notice. You'll be asked for a link to your resume and/or LinkedIn when you book.",
+      // TODO: swap all five placeholders for the real paid Calendly event
+      // type URLs (Stripe payment collection + a required intake question —
+      // a link to the resume/LinkedIn profile — configured per type in the
+      // Calendly dashboard) once created — see README. Placeholders reuse
+      // the free link so the dropdown works today; it does NOT yet charge.
       options: [
         {
-          label: "1 block — Resume revamp — $170",
+          label: "Resume — 1 Hour — $170",
           calendlyUrl: "https://calendly.com/bakari-holmes/30min",
+          description:
+            "I review your resume ahead of time, then we go over the feedback and rework it together, live.",
         },
         {
-          label: "2 blocks — Resume + LinkedIn — $255",
+          label: "Resume — 2 Hours — $255",
           calendlyUrl: "https://calendly.com/bakari-holmes/30min",
+          description:
+            "Same model, more room — formatting, keyword optimization, and tailoring to a specific role.",
         },
         {
-          label: "3 blocks — Resume + LinkedIn + working session — $340",
+          label: "LinkedIn — 1 Hour — $170",
+          calendlyUrl: "https://calendly.com/bakari-holmes/30min",
+          description:
+            "Same async + live model, applied to your LinkedIn profile — headline, summary, and how it reads to recruiters.",
+        },
+        {
+          label: "LinkedIn — 2 Hours — $255",
+          calendlyUrl: "https://calendly.com/bakari-holmes/30min",
+          description:
+            "The deeper pass on your LinkedIn profile — full experience section, recruiter visibility, and positioning.",
+        },
+        {
+          label: "Resume + LinkedIn Makeover — 3 Hours — $340",
+          calendlyUrl: "https://calendly.com/bakari-holmes/30min",
+          description:
+            "The full overhaul — resume and LinkedIn together, plus a live working session to get both squared away in one sitting.",
+        },
+      ],
+    },
+    consulting: {
+      kicker: "Speaking & Consulting",
+      title: "Book a free intro call",
+      description: "Public speaking and engineering consulting.",
+      services: ["public speaking", "engineering consultant"],
+      options: [
+        {
+          label: "Book on Calendly →",
           calendlyUrl: "https://calendly.com/bakari-holmes/30min",
         },
       ],

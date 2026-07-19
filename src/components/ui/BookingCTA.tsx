@@ -1,6 +1,10 @@
 import { CalendlyButton } from "@/components/sections/CalendlyButton";
 
-export type BookingOption = { label: string; calendlyUrl: string };
+export type BookingOption = {
+  label: string;
+  calendlyUrl: string;
+  description?: string;
+};
 
 type BookingCTAProps = {
   kicker: string;
@@ -9,6 +13,10 @@ type BookingCTAProps = {
   services: readonly string[];
   options: readonly BookingOption[];
   surface?: "surface" | "surface-2";
+  /** Shown above the CTA row — trims decision-paralysis on multi-option cards. */
+  helperNote?: string;
+  /** Shown below the CTA row — risk reversal (cancellation policy) right before the ask. */
+  paymentNote?: string;
 };
 
 export function BookingCTA({
@@ -18,6 +26,8 @@ export function BookingCTA({
   services,
   options,
   surface = "surface-2",
+  helperNote,
+  paymentNote,
 }: BookingCTAProps) {
   return (
     <div
@@ -44,6 +54,11 @@ export function BookingCTA({
           </span>
         ))}
       </div>
+      {helperNote && (
+        <p className="mb-3 font-serif text-sm leading-snug text-muted italic">
+          {helperNote}
+        </p>
+      )}
       <div className="flex flex-wrap gap-3">
         {options.map((option) => (
           <CalendlyButton
@@ -54,6 +69,11 @@ export function BookingCTA({
           />
         ))}
       </div>
+      {paymentNote && (
+        <p className="mt-2.5 font-mono text-[11px] tracking-[0.04em] text-muted">
+          {paymentNote}
+        </p>
+      )}
     </div>
   );
 }

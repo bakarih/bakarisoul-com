@@ -6,15 +6,24 @@ import { BookingCTADropdown } from "@/components/ui/BookingCTADropdown";
 
 const props = {
   kicker: "Resume & LinkedIn",
-  title: "Resume & LinkedIn Makeover",
-  description: "Billed in $85 blocks.",
-  services: ["resume revamp", "linkedin makeover"],
+  title: "Resume & LinkedIn Review",
+  description: "Async + live.",
+  services: ["resume review", "linkedin review"],
   options: [
-    { label: "1 block — Resume revamp — $85", calendlyUrl: "https://calendly.com/a" },
-    { label: "2 blocks — Resume + LinkedIn — $170", calendlyUrl: "https://calendly.com/b" },
     {
-      label: "3 blocks — Resume + LinkedIn + working session — $255",
+      label: "Resume — 1 Hour — $170",
+      calendlyUrl: "https://calendly.com/a",
+      description: "Resume, one hour.",
+    },
+    {
+      label: "Resume — 2 Hours — $255",
+      calendlyUrl: "https://calendly.com/b",
+      description: "Resume, two hours.",
+    },
+    {
+      label: "LinkedIn — 1 Hour — $170",
       calendlyUrl: "https://calendly.com/c",
+      description: "LinkedIn, one hour.",
     },
   ],
 };
@@ -46,5 +55,34 @@ describe("BookingCTADropdown", () => {
       "href",
       "https://calendly.com/b"
     );
+  });
+
+  it("shows the selected option's description and updates it on change", () => {
+    render(<BookingCTADropdown {...props} />);
+
+    expect(screen.getByText("Resume, one hour.")).toBeInTheDocument();
+
+    fireEvent.change(screen.getByLabelText("Choose a package"), {
+      target: { value: "2" },
+    });
+
+    expect(screen.getByText("LinkedIn, one hour.")).toBeInTheDocument();
+    expect(screen.queryByText("Resume, one hour.")).not.toBeInTheDocument();
+  });
+
+  it("renders the helper and payment notes when provided, and omits them when not", () => {
+    const { rerender } = render(
+      <BookingCTADropdown
+        {...props}
+        helperNote="Not sure which to pick?"
+        paymentNote="Free reschedule with 24h notice."
+      />
+    );
+    expect(screen.getByText("Not sure which to pick?")).toBeInTheDocument();
+    expect(screen.getByText("Free reschedule with 24h notice.")).toBeInTheDocument();
+
+    rerender(<BookingCTADropdown {...props} />);
+    expect(screen.queryByText("Not sure which to pick?")).not.toBeInTheDocument();
+    expect(screen.queryByText("Free reschedule with 24h notice.")).not.toBeInTheDocument();
   });
 });

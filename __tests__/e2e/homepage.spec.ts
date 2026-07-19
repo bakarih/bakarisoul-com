@@ -50,7 +50,24 @@ test.describe("Homepage", () => {
     await expect(page.getByRole("link", { name: "Book 2 Hours — $255 →" })).toBeVisible();
   });
 
-  test("resume & LinkedIn makeover offers a package dropdown with all three tiers", async ({
+  test("both paid hire cards show a decision helper note and a risk-reversal note", async ({
+    page,
+  }) => {
+    await page.goto("/");
+    await expect(
+      page.getByText("Not sure? Start with 1 hour — we can always book a follow-up.")
+    ).toBeVisible();
+    await expect(
+      page.getByText("Not sure which to pick? Start with a 1-hour resume or LinkedIn review", {
+        exact: false,
+      })
+    ).toBeVisible();
+    await expect(page.getByText("Free reschedule with 24h notice.", { exact: false })).toHaveCount(
+      2
+    );
+  });
+
+  test("resume & LinkedIn review offers a package dropdown with all five tiers, each with its own description", async ({
     page,
   }) => {
     await page.goto("/");
@@ -58,16 +75,21 @@ test.describe("Homepage", () => {
     await expect(select).toBeVisible();
 
     for (const tier of [
-      "1 block — Resume revamp — $170",
-      "2 blocks — Resume + LinkedIn — $255",
-      "3 blocks — Resume + LinkedIn + working session — $340",
+      "Resume — 1 Hour — $170",
+      "Resume — 2 Hours — $255",
+      "LinkedIn — 1 Hour — $170",
+      "LinkedIn — 2 Hours — $255",
+      "Resume + LinkedIn Makeover — 3 Hours — $340",
     ]) {
       await expect(select.getByRole("option", { name: tier })).toBeAttached();
     }
 
-    // Selecting a different tier doesn't error and the booking button stays usable.
-    await select.selectOption({ label: "3 blocks — Resume + LinkedIn + working session — $340" });
-    await expect(select).toHaveValue("2"); // zero-indexed: 3rd option
+    // Selecting a different tier updates the description and the booking button stays usable.
+    await select.selectOption({ label: "LinkedIn — 2 Hours — $255" });
+    await expect(select).toHaveValue("3"); // zero-indexed: 4th option
+    await expect(
+      page.getByText("The deeper pass on your LinkedIn profile", { exact: false })
+    ).toBeVisible();
   });
 
   test("footer has social links and legal page links", async ({ page }) => {

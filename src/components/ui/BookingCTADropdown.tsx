@@ -11,6 +11,10 @@ type BookingCTADropdownProps = {
   services: readonly string[];
   options: readonly BookingOption[];
   surface?: "surface" | "surface-2";
+  /** Shown above the picker — trims decision-paralysis across the option list. */
+  helperNote?: string;
+  /** Shown below the picker — risk reversal + booking-flow expectations, right before the ask. */
+  paymentNote?: string;
 };
 
 export function BookingCTADropdown({
@@ -20,6 +24,8 @@ export function BookingCTADropdown({
   services,
   options,
   surface = "surface-2",
+  helperNote,
+  paymentNote,
 }: BookingCTADropdownProps) {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const selected = options[selectedIndex];
@@ -49,6 +55,11 @@ export function BookingCTADropdown({
           </span>
         ))}
       </div>
+      {helperNote && (
+        <p className="mb-3 font-serif text-sm leading-snug text-muted italic">
+          {helperNote}
+        </p>
+      )}
       <div className="flex flex-col gap-3 sm:flex-row">
         <label htmlFor="resume-linkedin-tier" className="sr-only">
           Choose a package
@@ -71,6 +82,16 @@ export function BookingCTADropdown({
           className="inline-block shrink-0 bg-text px-6 py-3.5 font-mono text-xs font-semibold tracking-[0.14em] text-surface uppercase"
         />
       </div>
+      {selected.description && (
+        <p className="mt-2.5 font-serif text-sm leading-snug text-muted italic">
+          {selected.description}
+        </p>
+      )}
+      {paymentNote && (
+        <p className="mt-2.5 font-mono text-[11px] tracking-[0.04em] text-muted">
+          {paymentNote}
+        </p>
+      )}
     </div>
   );
 }

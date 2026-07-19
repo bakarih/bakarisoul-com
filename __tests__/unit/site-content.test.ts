@@ -59,13 +59,28 @@ describe("site.ts content sanity", () => {
     expect(site.hire.interviewCoaching.options[1].label).toContain("2 Hours");
   });
 
-  it("resume & LinkedIn makeover offers exactly three tiers, each priced as work blocks + 1hr prep at $85/hr", () => {
+  it("resume & LinkedIn review offers five tiers: resume/linkedin x 1hr/2hr, plus the combined makeover", () => {
     const options = site.hire.resumeLinkedInMakeover.options;
-    expect(options).toHaveLength(3);
-    // 1 block + prep = $170, 2 blocks + prep = $255, 3 blocks + prep = $340
-    expect(options[0].label).toContain("$170");
-    expect(options[1].label).toContain("$255");
-    expect(options[2].label).toContain("$340");
+    expect(options).toHaveLength(5);
+    expect(options[0].label).toBe("Resume — 1 Hour — $170");
+    expect(options[1].label).toBe("Resume — 2 Hours — $255");
+    expect(options[2].label).toBe("LinkedIn — 1 Hour — $170");
+    expect(options[3].label).toBe("LinkedIn — 2 Hours — $255");
+    expect(options[4].label).toBe("Resume + LinkedIn Makeover — 3 Hours — $340");
+  });
+
+  it("every resume & LinkedIn review option has a distinct description", () => {
+    const options = site.hire.resumeLinkedInMakeover.options;
+    const descriptions = options.map((o) => o.description);
+    expect(descriptions.every((d) => typeof d === "string" && d.length > 0)).toBe(true);
+    expect(new Set(descriptions).size).toBe(options.length);
+  });
+
+  it("both paid hire cards carry a helper note and a payment/risk-reversal note", () => {
+    for (const group of [site.hire.interviewCoaching, site.hire.resumeLinkedInMakeover]) {
+      expect(group.helperNote.length).toBeGreaterThan(0);
+      expect(group.paymentNote).toContain("24h notice");
+    }
   });
 
   it("Substack URLs all point at the same subdomain", () => {

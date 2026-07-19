@@ -25,9 +25,9 @@ export function Write() {
         </span>
       </a>
       <SubscribeForm />
-      <BookingCTA {...hire.consulting} />
       <BookingCTA {...hire.interviewCoaching} />
       <BookingCTADropdown {...hire.resumeLinkedInMakeover} />
+      <BookingCTA {...hire.consulting} />
     </>
   );
 }
