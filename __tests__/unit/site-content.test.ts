@@ -59,12 +59,13 @@ describe("site.ts content sanity", () => {
     expect(site.hire.interviewCoaching.options[1].label).toContain("2 Hours");
   });
 
-  it("resume & LinkedIn makeover offers exactly three block tiers, priced consistently at $85/block", () => {
+  it("resume & LinkedIn makeover offers exactly three tiers, each priced as work blocks + 1hr prep at $85/hr", () => {
     const options = site.hire.resumeLinkedInMakeover.options;
     expect(options).toHaveLength(3);
-    expect(options[0].label).toContain("$85");
-    expect(options[1].label).toContain("$170");
-    expect(options[2].label).toContain("$255");
+    // 1 block + prep = $170, 2 blocks + prep = $255, 3 blocks + prep = $340
+    expect(options[0].label).toContain("$170");
+    expect(options[1].label).toContain("$255");
+    expect(options[2].label).toContain("$340");
   });
 
   it("Substack URLs all point at the same subdomain", () => {

@@ -58,15 +58,15 @@ test.describe("Homepage", () => {
     await expect(select).toBeVisible();
 
     for (const tier of [
-      "1 block — Resume revamp — $85",
-      "2 blocks — Resume + LinkedIn — $170",
-      "3 blocks — Resume + LinkedIn + working session — $255",
+      "1 block — Resume revamp — $170",
+      "2 blocks — Resume + LinkedIn — $255",
+      "3 blocks — Resume + LinkedIn + working session — $340",
     ]) {
       await expect(select.getByRole("option", { name: tier })).toBeAttached();
     }
 
     // Selecting a different tier doesn't error and the booking button stays usable.
-    await select.selectOption({ label: "3 blocks — Resume + LinkedIn + working session — $255" });
+    await select.selectOption({ label: "3 blocks — Resume + LinkedIn + working session — $340" });
     await expect(select).toHaveValue("2"); // zero-indexed: 3rd option
   });
 
