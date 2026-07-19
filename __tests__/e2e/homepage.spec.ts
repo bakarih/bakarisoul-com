@@ -36,18 +36,38 @@ test.describe("Homepage", () => {
     await expect(page.getByRole("link", { name: "Watch on YouTube →" })).toBeVisible();
   });
 
-  test("renders all three booking CTAs — speaking/consulting, paid interview coaching, and creative", async ({
+  test("renders all four booking CTAs — speaking/consulting, paid interview coaching, resume/LinkedIn, and creative", async ({
     page,
   }) => {
     await page.goto("/");
-    // Free-intro-call CTAs (speaking/consulting + creative) share this exact label.
+    // Free-intro-call CTA (speaking/consulting) + creative CTA + the
+    // resume/LinkedIn dropdown's "Book" button all share this exact label.
     await expect(
       page.getByRole("link", { name: "Book on Calendly →", exact: true })
-    ).toHaveCount(2);
-    // The paid interview coaching CTA has its own distinct, price-labeled button.
-    await expect(
-      page.getByRole("link", { name: "Book on Calendly → ($85/hr)" })
-    ).toBeVisible();
+    ).toHaveCount(3);
+    // Interview coaching offers two distinct, price-labeled options.
+    await expect(page.getByRole("link", { name: "Book 1 Hour — $170 →" })).toBeVisible();
+    await expect(page.getByRole("link", { name: "Book 2 Hours — $255 →" })).toBeVisible();
+  });
+
+  test("resume & LinkedIn makeover offers a package dropdown with all three tiers", async ({
+    page,
+  }) => {
+    await page.goto("/");
+    const select = page.getByLabel("Choose a package");
+    await expect(select).toBeVisible();
+
+    for (const tier of [
+      "1 block — Resume revamp — $85",
+      "2 blocks — Resume + LinkedIn — $170",
+      "3 blocks — Resume + LinkedIn + working session — $255",
+    ]) {
+      await expect(select.getByRole("option", { name: tier })).toBeAttached();
+    }
+
+    // Selecting a different tier doesn't error and the booking button stays usable.
+    await select.selectOption({ label: "3 blocks — Resume + LinkedIn + working session — $255" });
+    await expect(select).toHaveValue("2"); // zero-indexed: 3rd option
   });
 
   test("footer has social links and legal page links", async ({ page }) => {

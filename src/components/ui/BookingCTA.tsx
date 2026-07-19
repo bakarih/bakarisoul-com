@@ -1,12 +1,13 @@
 import { CalendlyButton } from "@/components/sections/CalendlyButton";
 
+export type BookingOption = { label: string; calendlyUrl: string };
+
 type BookingCTAProps = {
   kicker: string;
   title: string;
   description: string;
   services: readonly string[];
-  ctaLabel: string;
-  calendlyUrl: string;
+  options: readonly BookingOption[];
   surface?: "surface" | "surface-2";
 };
 
@@ -15,8 +16,7 @@ export function BookingCTA({
   title,
   description,
   services,
-  ctaLabel,
-  calendlyUrl,
+  options,
   surface = "surface-2",
 }: BookingCTAProps) {
   return (
@@ -44,11 +44,16 @@ export function BookingCTA({
           </span>
         ))}
       </div>
-      <CalendlyButton
-        url={calendlyUrl}
-        label={ctaLabel}
-        className="inline-block bg-text px-6 py-3.5 font-mono text-xs font-semibold tracking-[0.14em] text-surface uppercase"
-      />
+      <div className="flex flex-wrap gap-3">
+        {options.map((option) => (
+          <CalendlyButton
+            key={option.label}
+            url={option.calendlyUrl}
+            label={option.label}
+            className="inline-block bg-text px-6 py-3.5 font-mono text-xs font-semibold tracking-[0.14em] text-surface uppercase"
+          />
+        ))}
+      </div>
     </div>
   );
 }

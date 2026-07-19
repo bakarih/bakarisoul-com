@@ -40,8 +40,31 @@ describe("site.ts content sanity", () => {
     expect(site.music.youtubeUrl).toContain(site.music.youtubeId);
   });
 
-  it("Calendly URL points at calendly.com", () => {
-    expect(new URL(site.hire.calendlyUrl).hostname).toBe("calendly.com");
+  it("every booking option's Calendly URL points at calendly.com", () => {
+    for (const group of [
+      site.hire.consulting,
+      site.hire.interviewCoaching,
+      site.hire.resumeLinkedInMakeover,
+      site.hire.creative,
+    ]) {
+      for (const option of group.options) {
+        expect(new URL(option.calendlyUrl).hostname).toBe("calendly.com");
+      }
+    }
+  });
+
+  it("interview coaching offers exactly a 1-hour and a 2-hour option", () => {
+    expect(site.hire.interviewCoaching.options).toHaveLength(2);
+    expect(site.hire.interviewCoaching.options[0].label).toContain("1 Hour");
+    expect(site.hire.interviewCoaching.options[1].label).toContain("2 Hours");
+  });
+
+  it("resume & LinkedIn makeover offers exactly three block tiers, priced consistently at $85/block", () => {
+    const options = site.hire.resumeLinkedInMakeover.options;
+    expect(options).toHaveLength(3);
+    expect(options[0].label).toContain("$85");
+    expect(options[1].label).toContain("$170");
+    expect(options[2].label).toContain("$255");
   });
 
   it("Substack URLs all point at the same subdomain", () => {

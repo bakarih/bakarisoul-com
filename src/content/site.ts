@@ -406,33 +406,69 @@ export const site = {
   },
 
   hire: {
-    // Free intro-call link — public speaking and engineering consulting
-    // inquiries start here, no payment required.
-    calendlyUrl: "https://calendly.com/bakari-holmes/30min",
-    // TODO: swap for the paid "Technical & Behavioral Interview Coaching"
-    // Calendly event type (Stripe payment collection configured in the
-    // Calendly dashboard) once created — see README. Placeholder reuses the
-    // free link so the CTA works today; it does NOT yet charge $85/hr.
-    interviewCoachingCalendlyUrl: "https://calendly.com/bakari-holmes/30min",
     consulting: {
       kicker: "Speaking & Consulting",
       title: "Book a free intro call",
       description: "Public speaking and engineering consulting.",
       services: ["public speaking", "engineering consultant"],
-      ctaLabel: "Book on Calendly →",
+      options: [
+        {
+          label: "Book on Calendly →",
+          calendlyUrl: "https://calendly.com/bakari-holmes/30min",
+        },
+      ],
     },
     interviewCoaching: {
-      kicker: "Interview Coaching · $85/hr",
+      kicker: "Interview Coaching",
       title: "Technical & Behavioral Interview Coaching",
       description:
-        "Booked and paid in advance. Frameworks built from teaching interview prep at CodePath (93% pass rate across five cohorts), building interviewrubric.com, and my own current job search.",
+        "Includes an hour of prep on my end — your resume, goals, and LinkedIn — before every session, so I'm not coming in cold. Booked and paid in advance. Frameworks built from teaching interview prep at CodePath (93% pass rate across five cohorts), building interviewrubric.com, and my own current job search.",
       services: [
         "JD mapping",
         "gap analysis",
         "behavioral stories",
         "goal clarity",
       ],
-      ctaLabel: "Book on Calendly → ($85/hr)",
+      // TODO: swap both placeholders for the real paid "Technical &
+      // Behavioral Interview Coaching" Calendly event type URLs (1hr and 2hr,
+      // Stripe payment collection configured in the Calendly dashboard) once
+      // created — see README. Placeholders reuse the free link so the CTAs
+      // work today; they do NOT yet charge $170/$255.
+      options: [
+        {
+          label: "Book 1 Hour — $170 →",
+          calendlyUrl: "https://calendly.com/bakari-holmes/30min",
+        },
+        {
+          label: "Book 2 Hours — $255 →",
+          calendlyUrl: "https://calendly.com/bakari-holmes/30min",
+        },
+      ],
+    },
+    resumeLinkedInMakeover: {
+      kicker: "Resume & LinkedIn",
+      title: "Resume & LinkedIn Makeover",
+      description:
+        "Billed in $85 blocks — pick how much ground you need to cover. Booked and paid in advance.",
+      services: ["resume revamp", "linkedin makeover", "keyword optimization"],
+      // TODO: swap all three placeholders for the real paid Calendly event
+      // type URLs (Stripe payment collection configured in the Calendly
+      // dashboard) once created — see README. Placeholders reuse the free
+      // link so the dropdown works today; it does NOT yet charge.
+      options: [
+        {
+          label: "1 block — Resume revamp — $85",
+          calendlyUrl: "https://calendly.com/bakari-holmes/30min",
+        },
+        {
+          label: "2 blocks — Resume + LinkedIn — $170",
+          calendlyUrl: "https://calendly.com/bakari-holmes/30min",
+        },
+        {
+          label: "3 blocks — Resume + LinkedIn + working session — $255",
+          calendlyUrl: "https://calendly.com/bakari-holmes/30min",
+        },
+      ],
     },
     creative: {
       kicker: "Music & Writing",
@@ -447,7 +483,12 @@ export const site = {
         "resume writer",
         "author",
       ],
-      ctaLabel: "Book on Calendly →",
+      options: [
+        {
+          label: "Book on Calendly →",
+          calendlyUrl: "https://calendly.com/bakari-holmes/30min",
+        },
+      ],
     },
   },
 

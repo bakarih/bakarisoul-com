@@ -1,6 +1,7 @@
 import { site } from "@/content/site";
 import { SubscribeForm } from "./SubscribeForm";
 import { BookingCTA } from "@/components/ui/BookingCTA";
+import { BookingCTADropdown } from "@/components/ui/BookingCTADropdown";
 
 export function Write() {
   const { substack, hire } = site;
@@ -24,11 +25,9 @@ export function Write() {
         </span>
       </a>
       <SubscribeForm />
-      <BookingCTA {...hire.consulting} calendlyUrl={hire.calendlyUrl} />
-      <BookingCTA
-        {...hire.interviewCoaching}
-        calendlyUrl={hire.interviewCoachingCalendlyUrl}
-      />
+      <BookingCTA {...hire.consulting} />
+      <BookingCTA {...hire.interviewCoaching} />
+      <BookingCTADropdown {...hire.resumeLinkedInMakeover} />
     </>
   );
 }
