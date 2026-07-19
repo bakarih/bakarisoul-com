@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Newsreader, JetBrains_Mono } from "next/font/google";
+import { headers } from "next/headers";
 import "./globals.css";
 import { site } from "@/content/site";
 
@@ -49,11 +50,21 @@ const personJsonLd = {
   ],
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // Reading a per-request header here is what opts this route out of static
+  // prerendering. That's required, not incidental: middleware sets a fresh
+  // CSP nonce on every request, but a statically prerendered page is built
+  // once — there'd be no per-request nonce to stamp onto Next's own inline
+  // scripts without this route being rendered dynamically. The nonce itself
+  // isn't used below (JSON-LD is exempt from script-src, and the Calendly
+  // <Script> is covered by its own host allowlist) — just reading the
+  // header is what triggers the opt-out.
+  await headers();
+
   return (
     <html
       lang="en"
