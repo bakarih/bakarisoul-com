@@ -18,7 +18,7 @@ export type LegalPageContent = {
 const bio: BioParagraph[] = [
   [
     {
-      text: "I've been an engineer for 10+ years — Python, React, and TypeScript at consumer scale, across 23andMe, CompetesTV, and CodePath. Before that, twelve years as an educator — K–12 physics and engineering (National Master Teacher Award).",
+      text: "I've been an engineer for 10+ years — Python, React, and TypeScript at consumer scale, across Roblox, Salesforce, CodePath, and multiple startups, teaching interview prep at CodePath to a 93% pass rate across five cohorts. Before that, twelve years as an educator — K–12 physics and engineering (National Master Teacher Award).",
     },
   ],
   [
@@ -337,7 +337,8 @@ export const site = {
     eng: {
       number: "01",
       title: ["Engineering", "Leadership"],
-      tagline: "Rubrics, standups, and everything I stopped debating.",
+      tagline:
+        "Interview coaching, resume reviews, and speaking — ten years of hiring, applied.",
     },
     ai: {
       number: "02",
