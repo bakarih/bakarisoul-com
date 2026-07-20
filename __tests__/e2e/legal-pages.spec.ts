@@ -19,7 +19,11 @@ test.describe("Legal pages", () => {
       "href",
       "https://bakarisoul.com/terms"
     );
-    await expect(page.getByText(/24 hours/)).toBeVisible();
+    // "24 hours" appears in multiple paragraphs (the ≥24h and <24h cases) —
+    // check the full policy is present rather than asserting a single match.
+    await expect(page.getByText(/24 hours' notice: full refund/)).toBeVisible();
+    await expect(page.getByText(/less than 24 hours' notice/)).toBeVisible();
+    await expect(page.getByText(/No-show, no notice/)).toBeVisible();
   });
 
   test("footer links navigate to the legal pages from the homepage", async ({ page }) => {

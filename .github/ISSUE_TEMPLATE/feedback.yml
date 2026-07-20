@@ -1,0 +1,28 @@
+name: Share Feedback
+description: General feedback about the site
+title: "[Feedback] "
+labels: ["feedback"]
+body:
+  - type: textarea
+    id: feedback
+    attributes:
+      label: What's on your mind?
+      description: Anything about the site, the writing, or the services — good or bad.
+      placeholder: Tell us what you think.
+    validations:
+      required: true
+  - type: input
+    id: page
+    attributes:
+      label: Which page? (optional)
+      placeholder: e.g. bakarisoul.com or bakarisoul.com/terms
+    validations:
+      required: false
+  - type: input
+    id: contact
+    attributes:
+      label: Email (optional)
+      description: Only if you'd like a reply.
+      placeholder: you@example.com
+    validations:
+      required: false

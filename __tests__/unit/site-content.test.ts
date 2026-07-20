@@ -40,8 +40,47 @@ describe("site.ts content sanity", () => {
     expect(site.music.youtubeUrl).toContain(site.music.youtubeId);
   });
 
-  it("Calendly URL points at calendly.com", () => {
-    expect(new URL(site.hire.calendlyUrl).hostname).toBe("calendly.com");
+  it("every booking option's Calendly URL points at calendly.com", () => {
+    for (const group of [
+      site.hire.consulting,
+      site.hire.interviewCoaching,
+      site.hire.resumeLinkedInMakeover,
+      site.hire.creative,
+    ]) {
+      for (const option of group.options) {
+        expect(new URL(option.calendlyUrl).hostname).toBe("calendly.com");
+      }
+    }
+  });
+
+  it("interview coaching offers exactly a 1-hour and a 2-hour option", () => {
+    expect(site.hire.interviewCoaching.options).toHaveLength(2);
+    expect(site.hire.interviewCoaching.options[0].label).toContain("1 Hour");
+    expect(site.hire.interviewCoaching.options[1].label).toContain("2 Hours");
+  });
+
+  it("resume & LinkedIn review offers five tiers: resume/linkedin x 1hr/2hr, plus the combined makeover", () => {
+    const options = site.hire.resumeLinkedInMakeover.options;
+    expect(options).toHaveLength(5);
+    expect(options[0].label).toBe("Resume — 1 Hour — $170");
+    expect(options[1].label).toBe("Resume — 2 Hours — $255");
+    expect(options[2].label).toBe("LinkedIn — 1 Hour — $170");
+    expect(options[3].label).toBe("LinkedIn — 2 Hours — $255");
+    expect(options[4].label).toBe("Resume + LinkedIn Makeover — 3 Hours — $340");
+  });
+
+  it("every resume & LinkedIn review option has a distinct description", () => {
+    const options = site.hire.resumeLinkedInMakeover.options;
+    const descriptions = options.map((o) => o.description);
+    expect(descriptions.every((d) => typeof d === "string" && d.length > 0)).toBe(true);
+    expect(new Set(descriptions).size).toBe(options.length);
+  });
+
+  it("both paid hire cards carry a helper note and a payment/risk-reversal note", () => {
+    for (const group of [site.hire.interviewCoaching, site.hire.resumeLinkedInMakeover]) {
+      expect(group.helperNote.length).toBeGreaterThan(0);
+      expect(group.paymentNote).toContain("24h notice");
+    }
   });
 
   it("Substack URLs all point at the same subdomain", () => {

@@ -18,7 +18,7 @@ export type LegalPageContent = {
 const bio: BioParagraph[] = [
   [
     {
-      text: "I've been an engineer for 10+ years — Python, React, and TypeScript at consumer scale, across 23andMe, CompetesTV, and CodePath. Before that, twelve years as an educator — K–12 physics and engineering (National Master Teacher Award).",
+      text: "I've been an engineer for 10+ years — Python, React, and TypeScript at consumer scale, across Roblox, Salesforce, CodePath, and multiple startups, teaching interview prep at CodePath to a 93% pass rate across five cohorts. Before that, twelve years as an educator — K–12 physics and engineering (National Master Teacher Award).",
     },
   ],
   [
@@ -201,7 +201,23 @@ const terms: LegalPageContent = {
         [{ text: "Free intro calls are free, as advertised." }],
         [
           {
-            text: "Paid sessions — consulting, coaching, or creative work — are billed through Stripe via Calendly. Cancel or reschedule at least 24 hours before the meeting for a full refund. Cancellations inside 24 hours aren't refunded.",
+            text: "Paid sessions — consulting, coaching, or creative work — are billed through Stripe via Calendly, booked and paid in advance.",
+          },
+        ],
+        [
+          {
+            text: "Reschedule or cancel with at least 24 hours' notice: full refund or a free reschedule, your choice.",
+          },
+        ],
+        [
+          {
+            text: "Cancel with less than 24 hours' notice: the session fee is forfeited, but you still get one free reschedule.",
+          },
+        ],
+        [{ text: "No-show, no notice: fee forfeited, no reschedule." }],
+        [
+          {
+            text: "If I need to cancel or reschedule for any reason: you always get a full refund or a free reschedule, no exceptions.",
           },
         ],
         [
@@ -321,7 +337,8 @@ export const site = {
     eng: {
       number: "01",
       title: ["Engineering", "Leadership"],
-      tagline: "Rubrics, standups, and everything I stopped debating.",
+      tagline:
+        "Interview coaching, resume reviews, and speaking — ten years of hiring, applied.",
     },
     ai: {
       number: "02",
@@ -390,21 +407,94 @@ export const site = {
   },
 
   hire: {
-    // TODO: swap for a paid "Consulting" Calendly event type (with Stripe
-    // payment collection configured in the Calendly dashboard) once set up —
-    // see README.
-    calendlyUrl: "https://calendly.com/bakari-holmes/30min",
-    consulting: {
-      kicker: "Speaking & Coaching",
-      title: "Book me for a call",
+    interviewCoaching: {
+      kicker: "Interview Coaching",
+      title: "Technical & Behavioral Interview Coaching",
       description:
-        "Public speaking, technical interview coaching, and engineering consulting.",
+        "Live 1:1 coaching — technical and behavioral. Frameworks built from teaching interview prep at CodePath (93% pass rate across five cohorts), building interviewrubric.com, hundreds of reps on both sides of the table, and formal training from Interview Kickstart and Outco.",
       services: [
-        "public speaking",
-        "technical interview coaching",
-        "engineering consultant",
+        "JD mapping",
+        "gap analysis",
+        "behavioral stories",
+        "goal clarity",
       ],
-      ctaLabel: "Book on Calendly →",
+      helperNote: "Not sure? Start with 1 hour — we can always book a follow-up.",
+      paymentNote: "Free reschedule with 24h notice.",
+      // TODO: swap both placeholders for the real paid "Interview Coaching —
+      // Live" Calendly event type URLs (1hr and 2hr, Stripe payment
+      // collection configured in the Calendly dashboard) once created — see
+      // README. Placeholders reuse the free link so the CTAs work today;
+      // they do NOT yet charge $170/$255.
+      options: [
+        {
+          label: "Book 1 Hour — $170 →",
+          calendlyUrl: "https://calendly.com/bakari-holmes/30min",
+        },
+        {
+          label: "Book 2 Hours — $255 →",
+          calendlyUrl: "https://calendly.com/bakari-holmes/30min",
+        },
+      ],
+    },
+    resumeLinkedInMakeover: {
+      kicker: "Resume & LinkedIn",
+      title: "Resume & LinkedIn Review",
+      description:
+        "Async + live. I review your material ahead of time, then we go over the feedback together and rework it live — resume, LinkedIn, or both.",
+      services: ["resume review", "linkedin review", "keyword optimization"],
+      helperNote:
+        "Not sure which to pick? Start with a 1-hour resume or LinkedIn review — we can always go deeper.",
+      paymentNote:
+        "Free reschedule with 24h notice. You'll be asked for a link to your resume and/or LinkedIn when you book.",
+      // TODO: swap all five placeholders for the real paid Calendly event
+      // type URLs (Stripe payment collection + a required intake question —
+      // a link to the resume/LinkedIn profile — configured per type in the
+      // Calendly dashboard) once created — see README. Placeholders reuse
+      // the free link so the dropdown works today; it does NOT yet charge.
+      options: [
+        {
+          label: "Resume — 1 Hour — $170",
+          calendlyUrl: "https://calendly.com/bakari-holmes/30min",
+          description:
+            "I review your resume ahead of time, then we go over the feedback and rework it together, live.",
+        },
+        {
+          label: "Resume — 2 Hours — $255",
+          calendlyUrl: "https://calendly.com/bakari-holmes/30min",
+          description:
+            "Same model, more room — formatting, keyword optimization, and tailoring to a specific role.",
+        },
+        {
+          label: "LinkedIn — 1 Hour — $170",
+          calendlyUrl: "https://calendly.com/bakari-holmes/30min",
+          description:
+            "Same async + live model, applied to your LinkedIn profile — headline, summary, and how it reads to recruiters.",
+        },
+        {
+          label: "LinkedIn — 2 Hours — $255",
+          calendlyUrl: "https://calendly.com/bakari-holmes/30min",
+          description:
+            "The deeper pass on your LinkedIn profile — full experience section, recruiter visibility, and positioning.",
+        },
+        {
+          label: "Resume + LinkedIn Makeover — 3 Hours — $340",
+          calendlyUrl: "https://calendly.com/bakari-holmes/30min",
+          description:
+            "The full overhaul — resume and LinkedIn together, plus a live working session to get both squared away in one sitting.",
+        },
+      ],
+    },
+    consulting: {
+      kicker: "Speaking & Consulting",
+      title: "Book a free intro call",
+      description: "Public speaking and engineering consulting.",
+      services: ["public speaking", "engineering consultant"],
+      options: [
+        {
+          label: "Book on Calendly →",
+          calendlyUrl: "https://calendly.com/bakari-holmes/30min",
+        },
+      ],
     },
     creative: {
       kicker: "Music & Writing",
@@ -419,7 +509,12 @@ export const site = {
         "resume writer",
         "author",
       ],
-      ctaLabel: "Book on Calendly →",
+      options: [
+        {
+          label: "Book on Calendly →",
+          calendlyUrl: "https://calendly.com/bakari-holmes/30min",
+        },
+      ],
     },
   },
 

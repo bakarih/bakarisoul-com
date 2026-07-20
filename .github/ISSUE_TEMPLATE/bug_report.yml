@@ -1,0 +1,32 @@
+name: Report a Bug
+description: Something isn't working
+title: "[Bug] "
+labels: ["bug"]
+body:
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      placeholder: Describe what went wrong.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What did you expect to happen instead?
+    validations:
+      required: false
+  - type: input
+    id: page
+    attributes:
+      label: Which page?
+      placeholder: e.g. bakarisoul.com or bakarisoul.com/terms
+    validations:
+      required: false
+  - type: input
+    id: device
+    attributes:
+      label: Browser / device (optional)
+      placeholder: e.g. Chrome on iPhone
+    validations:
+      required: false

@@ -4,5 +4,5 @@ import { BookingCTA } from "@/components/ui/BookingCTA";
 export function Work() {
   const { hire } = site;
 
-  return <BookingCTA {...hire.creative} calendlyUrl={hire.calendlyUrl} />;
+  return <BookingCTA {...hire.creative} />;
 }
