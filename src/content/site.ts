@@ -411,7 +411,7 @@ export const site = {
       kicker: "Interview Coaching",
       title: "Technical & Behavioral Interview Coaching",
       description:
-        "Live 1:1 coaching — technical and behavioral. Frameworks built from teaching interview prep at CodePath (93% pass rate across five cohorts), building interviewrubric.com, hundreds of reps on both sides of the table, and formal training from Interview Kickstart and Outco.",
+        "Includes an hour of prep on my end: your resume, goals, and LinkedIn before every session, so I'm not coming in cold. Booked and paid in advance. Frameworks built from teaching interview prep at CodePath (93% pass rate across five cohorts), building interviewrubric.com, and hundreds of reps designing, giving, and sitting on the other side of interviews myself.",
       services: [
         "JD mapping",
         "gap analysis",
