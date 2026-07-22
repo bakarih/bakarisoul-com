@@ -328,7 +328,7 @@ export const site = {
     titleEmphasis: "making hard things make sense",
     titleSuffix: ".",
     subtitle:
-      "Bakari Holmes · AI Enablement Leader, Senior/Staff Software Engineer, Engineering Manager, Technical Lead, speaker, educator, musician, and interview coach. Currently singing bass, baritone, and tenor with commUNITY ATL. Based in Atlanta.",
+      "Bakari Holmes — engineering leader turned interview coach, resume reviewer, and speaker. Sings bass, baritone, and tenor with commUNITY ATL. Based in Atlanta.",
   },
 
   bio,
